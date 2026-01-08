@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Înscriere – ELOHUB Community</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="navbar">
+      <img src="images/logo.png" alt="Logo ELOHUB" class="logo">
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="turnee.html">Turnee</a></li>
+        <li><a href="inscriere.html" class="active">Înscriere</a></li>
+      </ul>
+
+      <a href="https://discord.gg/pgcGsfjr" target="_blank" class="discord-btn">
+        <img src="images/discord.png" alt="Discord">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header-inscriere fade-in">
+    <div class="header-content">
+      <h1>Înscriere ELOHUB!</h1>
+      <p>Alătură-te comunității CS2, înscrie-te la turnee și fii parte din competiția ELOHUB.</p>
+      <a href="https://discord.gg/pgcGsfjr" class="btn">Intră pe Discord</a>
+    </div>
+  </header>
+
+
+
+  <!-- Footer -->
+  <footer class="fade-in">
+    <p>© 2026 ELOHUB Community. Toate drepturile rezervate.</p>
+  </footer>
+
+  <!-- JS pentru Fade-in la Scroll -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+
+  <!-- JS pentru cursor titlu header -->
+  <script>
+    const headerInscriere = document.querySelector('.header-inscriere .header-content h1');
+
+    setTimeout(() => {
+      headerInscriere.style.borderRight = 'none'; // cursorul dispare complet după 3s
+    }, 3000);
+  </script>
+
+</body>
+</html>
