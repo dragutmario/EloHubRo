@@ -17,9 +17,11 @@
       <img src="images/logo.png" alt="Logo ELOHUB" class="logo">
 
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="turnee.html">Turnee</a></li>
-        <li><a href="inscriere.html">Înscriere</a></li>
+        <li><a href="index.html" class="active">HOME</a></li>
+        <li><a href="turnee.html">TURNEE</a></li>
+        <li><a href="inscriere.html">ÎNSCRIERE</a></li>
+        <li><a href="despre.html">DESPRE NOI</a></li>
+         <li><a href="regulament.html">REGULAMENT</a></li>
       </ul>
 
       <a href="https://discord.gg/pgcGsfjr" target="_blank" class="discord-btn">
@@ -27,6 +29,32 @@
       </a>
     </div>
   </nav>
+
+  <!-- Mobile Hamburger -->
+<div class="mobile-menu-icon" id="mobileMenuIcon">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <img src="images/logo.png" alt="Logo ELOHUB" class="mobile-logo home-logo">
+  <ul>
+    <li><a href="index.html" class="active">HOME</a></li>
+    <li><a href="turnee.html">TURNEE</a></li>
+    <li><a href="inscriere.html">ÎNSCRIERE</a></li>
+    <li><a href="despre.html">DESPRE NOI</a></li>
+    <li><a href="regulament.html">REGULAMENT</a></li>
+    <li>
+      <a href="https://discord.gg/pgcGsfjr" target="_blank">
+        <img src="images/discord.png" alt="Discord" style="height:40px;">
+      </a>
+    </li>
+  </ul>
+</div>
+
+
 
   <!-- Header -->
   <header class="header-turnee fade-in" style="background-image: url('images/header-background.png');">
@@ -43,6 +71,20 @@
     <p>Ne dorim să construim o comunitate CS2 puternică, unde jucătorii pot concura, crește și-și demonstra abilitățile. Alătură-te singur sau cu echipa ta și participă la turnee cu premii în creștere.</p>
   </section>
 
+<section class="discord-members fade-in">
+  <div class="discord-card">
+    <img src="images/logo.png" alt="ELOHUB Logo" class="discord-card-logo">
+
+    <h2>Comunitatea ELOHUB</h2>
+
+    <p class="discord-count">
+      <span id="member-count">0</span> membri pe Discord
+    </p>
+  </div>
+</section>
+
+
+
   <!-- Social Media -->
   <section class="social-card fade-in">
     <h2>Rămâi conectat la turnee și evenimente – Social Media ELOHUB</h2>
@@ -56,7 +98,7 @@
   <!-- Card Turneu -->
   <section class="turnee-active fade-in">
     <div class="turneu-card">
-      <h3>Turneu Active</h3>
+      <h3>Turnee Active</h3>
       <p><strong>Turneu</strong></p>
       <p>Status: Upcoming</p>
       <p>Premiu: €100 (transferabil pe Revolut, ING, Paysafe)</p>
@@ -126,6 +168,61 @@
 </script>
 
 
+<script>
+  // Animare număr membri Discord
+  const memberCountEl = document.getElementById('member-count');
+  const targetCount = 300; // aici pui câți membri sunt
+  const duration = 2000; // durata animatiei în ms
+  let start = 0;
+  const stepTime = Math.abs(Math.floor(duration / targetCount));
+
+  const counter = setInterval(() => {
+    start++;
+    memberCountEl.textContent = start.toLocaleString(); // adaugă separator mii
+    if(start >= targetCount){
+      clearInterval(counter);
+      memberCountEl.textContent = targetCount.toLocaleString() + '+';
+    }
+  }, stepTime);
+</script>
+
+<script>
+const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+const mobileMenu = document.getElementById('mobileMenu');
+
+// Deschide / închide meniul din hamburger
+mobileMenuIcon.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  mobileMenuIcon.classList.toggle('active');
+
+  // Scroll lock
+  document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+});
+
+// Închide meniul când apeși pe un link din meniu
+const mobileLinks = mobileMenu.querySelectorAll('a');
+
+mobileLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    mobileMenuIcon.classList.remove('active');
+    document.body.style.overflow = 'auto'; // reactivare scroll
+  });
+});
+</script>
+
+<script>
+// Reset automat la resize (mobil → desktop)
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    mobileMenu.classList.remove('open');
+    mobileMenuIcon.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+});
+</script>
+
 
 </body>
 </html>
+
