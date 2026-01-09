@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
   <title>Înscriere – ELOHUB Community</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,9 +16,11 @@
       <img src="images/logo.png" alt="Logo ELOHUB" class="logo">
 
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="turnee.html">Turnee</a></li>
-        <li><a href="inscriere.html" class="active">Înscriere</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="turnee.html">TURNEE</a></li>
+        <li><a href="inscriere.html"  class="active">ÎNSCRIERE</a></li>
+        <li><a href="despre.html">DESPRE NOI</a></li>
+         <li><a href="regulament.html">REGULAMENT</a></li>
       </ul>
 
       <a href="https://discord.gg/pgcGsfjr" target="_blank" class="discord-btn">
@@ -24,6 +28,30 @@
       </a>
     </div>
   </nav>
+
+  <!-- Mobile Hamburger -->
+<div class="mobile-menu-icon" id="mobileMenuIcon">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <img src="images/logo.png" alt="Logo ELOHUB" class="mobile-logo home-logo">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="turnee.html">TURNEE</a></li>
+    <li><a href="inscriere.html" class="active">ÎNSCRIERE</a></li>
+    <li><a href="despre.html">DESPRE NOI</a></li>
+    <li><a href="regulament.html">REGULAMENT</a></li>
+    <li>
+      <a href="https://discord.gg/pgcGsfjr" target="_blank">
+        <img src="images/discord.png" alt="Discord" style="height:40px;">
+      </a>
+    </li>
+  </ul>
+</div>
 
   <!-- Header -->
   <header class="header-inscriere fade-in">
@@ -70,6 +98,31 @@
       headerInscriere.style.borderRight = 'none'; // cursorul dispare complet după 3s
     }, 3000);
   </script>
+
+  <script>
+const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+const mobileMenu = document.getElementById('mobileMenu');
+
+// Deschide / închide meniul din hamburger
+mobileMenuIcon.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  mobileMenuIcon.classList.toggle('active');
+
+  // Scroll lock
+  document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+});
+
+// Închide meniul când apeși pe un link din meniu
+const mobileLinks = mobileMenu.querySelectorAll('a');
+
+mobileLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    mobileMenuIcon.classList.remove('active');
+    document.body.style.overflow = 'auto'; // reactivare scroll
+  });
+});
+</script>
 
 </body>
 </html>
