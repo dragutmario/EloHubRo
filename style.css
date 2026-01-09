@@ -19,9 +19,11 @@ a {
   justify-content: space-between;
   padding: 20px 40px;
   background: #0c1f12;
-  position: sticky;
+  position: fixed; /* Schimbare de la sticky */
   top: 0;
-  z-index: 100;
+  left: 0;
+  width: 100%;  /* Asigură că ocupă tot width-ul */
+  z-index: 1000; /* un pic mai mare pentru a fi deasupra altor elemente */
   box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 
@@ -64,6 +66,13 @@ a {
   transform: scale(1.05);
   filter: brightness(1.2) drop-shadow(0 0 10px #1E90FF);
 }
+
+.discord-btn {
+  position: relative;
+  left: -64px; /* mută butonul 20px la stânga */
+}
+
+
 
 /* ===== Header ===== */
 .header-turnee {
@@ -145,6 +154,53 @@ a {
   color: #2ed573;
   margin-bottom: 20px;
 }
+
+/* ===== Discord Members Card ===== */
+.discord-members {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.discord-card {
+  background: #0c1f12;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.discord-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 20px #2ed573, 0 0 40px #1ed760, 0 0 60px #38ff7e;
+}
+
+.discord-card-logo {
+  width: 90px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px #2ed573);
+}
+
+.discord-card h2 {
+  color: #2ed573;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.discord-count {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #d9f0c1;
+}
+
+.discord-count span {
+  color: #2ed573;
+  font-size: 2rem;
+}
+
+
+
 
 /* ===== Social Media ===== */
 .social-card {
@@ -267,7 +323,6 @@ footer {
   color: #94a3b8;
 }
 
-/* ===== Header Înscriere ===== */
 /* ===== Header Înscriere ===== */
 .header-inscriere {
   height: calc(100vh - 80px); /* 100% din înălțimea viewportului minus navbar */
@@ -399,6 +454,120 @@ footer {
   transform: translateY(0);
 }
 
+.despre-content {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.despre-content .card {
+  background: #0c1f12;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 300px;
+  flex: 1 1 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: left;
+}
+
+.despre-content .card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 20px #2ed573, 0 0 40px #1ed760, 0 0 60px #38ff7e;
+}
+
+.despre-content .card h2 {
+  color: #2ed573;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+
+.despre-content .card p,
+.despre-content .card ul {
+  color: #d9f0c1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.despre-content .card ul {
+  padding-left: 20px;
+}
+
+.despre-content .card ul li {
+  margin-bottom: 10px;
+}
+
+/* ===== Regulament ===== */
+.regulament {
+  display: flex;
+  max-width: 1000px;
+  margin: 120px auto 50px; /* mai jos de navbar */
+  gap: 40px;
+  padding: 0 20px;
+  align-items: flex-start; /* conținutul începe de sus */
+}
+
+.regulament-menu {
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centru vertical */
+  position: sticky;
+  top: 120px; /* sub navbar */
+  height: calc(100vh - 140px); /* ia tot viewport-ul minus top */
+}
+
+.regulament-menu ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+.regulament-menu li {
+  margin-bottom: 10px;
+}
+
+.regulament-menu a {
+  display: block;
+  padding: 8px 12px;
+  color: #2ed573;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.regulament-menu a:hover {
+  background: #1b3c22;
+  color: #38ff7e;
+}
+
+.regulament-content {
+  flex: 1;
+  color: #d9f0c1;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.regulament-content h2 {
+  margin-top: 50px;
+  color: #2ed573;
+}
+
+.regulament-content p {
+  margin-bottom: 20px;
+}
+
+.regulament-menu a.active {
+  background: #2ed573; /* verde neon */
+  color: #0b1a0f;      /* text contrast */
+}
+
+
+
+
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
   .header-content { margin-top: 12%; }
@@ -453,3 +622,158 @@ footer {
   .turneu-card p { font-size: 1rem; }
   .turneu-card .btn { padding: 10px 20px; font-size: 1rem; }
 }
+
+/* ===== Mobile Menu ===== */
+.mobile-menu {
+  display: flex; /* va fi ascuns prin transform */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(11, 26, 15, 0.95);
+  z-index: 2000;
+
+  /* ASCUNS PENTRU START */
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;  /* click-urile nu funcționează când e invizibil */
+  transition: all 0.4s ease;
+}
+
+
+
+.mobile-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* se poate da click acum */
+}
+
+
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centru vertical */
+  align-items: center;
+  gap: 32px;
+}
+
+
+/* ===== Pasul 8.3: animație link-uri ===== */
+.mobile-menu ul li {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.open ul li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu.open ul li:nth-child(1) { transition-delay: 0.05s; }
+.mobile-menu.open ul li:nth-child(2) { transition-delay: 0.1s; }
+.mobile-menu.open ul li:nth-child(3) { transition-delay: 0.15s; }
+.mobile-menu.open ul li:nth-child(4) { transition-delay: 0.2s; }
+.mobile-menu.open ul li:nth-child(5) { transition-delay: 0.25s; }
+.mobile-menu.open ul li:nth-child(6) { transition-delay: 0.3s; }
+
+
+
+.mobile-menu ul li a {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #2ed573;
+  padding: 12px 30px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+
+.mobile-menu ul li a:hover {
+  background: rgba(46, 213, 115, 0.15);
+  color: #38ff7e;
+  transform: scale(1.05);
+}
+
+/* Link activ în meniul mobil */
+.mobile-menu ul li a.active {
+  background: #2ed573;
+  color: #0b1a0f;
+  box-shadow: 0 0 15px rgba(46, 213, 115, 0.6);
+}
+
+.mobile-menu ul li a.active:hover {
+  transform: none;
+}
+
+/* Logo mobil doar pe Home */
+.home-logo {
+  display: block;
+  margin: 20px auto 40px auto; /* centrat și cu spațiu dedesubt */
+  width: 300px;  /* ajustați dimensiunea dacă e nevoie */
+  height: auto;
+}
+
+
+/* ===== Hamburger ===== */
+.mobile-menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 2100;
+  position: fixed;
+  top: 13px;
+  right: 25px;
+}
+
+.mobile-menu-icon div {
+  width: 30px;
+  height: 3px;
+  background-color: #2ed573;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Transform hamburger în X */
+.mobile-menu-icon.active div:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-icon.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-icon.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  /* afișează hamburger */
+  .mobile-menu-icon {
+    display: flex;
+  }
+
+  /* ascunde navbar desktop */
+  .nav-links,
+  .discord-btn,
+  .logo {
+    display: none;
+  }
+}
+
+
+
+
