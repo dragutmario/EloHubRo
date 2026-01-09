@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <title>Despre Noi – ELOHUB Community</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="navbar">
+      <img src="images/logo.png" alt="Logo ELOHUB" class="logo">
+
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="turnee.html">TURNEE</a></li>
+        <li><a href="inscriere.html">ÎNSCRIERE</a></li>
+        <li><a href="despre.html" class="active">DESPRE NOI</a></li>
+         <li><a href="regulament.html">REGULAMENT</a></li>
+      </ul>
+
+      <a href="https://discord.gg/pgcGsfjr" target="_blank" class="discord-btn">
+        <img src="images/discord.png" alt="Discord">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile Hamburger -->
+<div class="mobile-menu-icon" id="mobileMenuIcon">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <img src="images/logo.png" alt="Logo ELOHUB" class="mobile-logo home-logo">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="turnee.html">TURNEE</a></li>
+    <li><a href="inscriere.html">ÎNSCRIERE</a></li>
+    <li><a href="despre.html" class="active">DESPRE NOI</a></li>
+    <li><a href="regulament.html">REGULAMENT</a></li>
+    <li>
+      <a href="https://discord.gg/pgcGsfjr" target="_blank">
+        <img src="images/discord.png" alt="Discord" style="height:40px;">
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  <!-- Header Despre Noi -->
+  <header class="header-turnee fade-in" style="background-image: url('images/header-background.png');">
+    <div class="header-content">
+      <h1>🎮 Despre ELOHUB Community</h1>
+      <p>ELOHUB Community este o comunitate dedicată Counter-Strike 2, creată pentru jucători care își doresc competiție reală, organizare serioasă și evoluție constantă.</p>
+      <a href="https://discord.gg/pgcGsfjr" class="btn">Alătură-te Discord</a>
+    </div>
+  </header>
+
+  <!-- Card Despre Noi -->
+  <section class="turnee-active fade-in">
+    <div class="turneu-card">
+      <h3>Scopul Comunității și Servicii</h3>
+      <p>🔹 Organizăm turnee CS2 5v5 cu premii în bani</p>
+      <p>🔹 Momentan premiu: 100€, cu obiectivul de a crește de la eveniment la eveniment</p>
+      <p>🔹 Dispunem de 2 servere dedicate Counter-Strike 2, stabile și optimizate</p>
+      <p>🔹 Avem canale speciale pentru:</p>
+      <ul>
+        <li>FACEIT 🎯</li>
+        <li>Echipe & recrutări 🤝</li>
+        <li>Discuții CS2 și strategii 🧠</li>
+      </ul>
+      <p>🛡️ Staff-ul ELOHUB este activ, capabil și gata să ajute comunitatea în orice moment, asigurând un mediu corect și organizat.</p>
+      <p>📢 Ne dorim să construim o comunitate puternică, unde jucătorii pot concura, învăța și se pot afirma. Te așteptăm în număr cât mai mare, de preferat cu echipa ta, pentru a vă înscrie la turneele noastre și a lupta pentru premii din ce în ce mai mari.</p>
+      <p>🚀 ELOHUB Community – locul unde competiția începe cu adevărat.</p>
+      <a href="https://discord.gg/pgcGsfjr" class="btn">Intră pe Discord</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fade-in">
+    <p>© 2026 ELOHUB Community. Toate drepturile rezervate.</p>
+  </footer>
+
+  <!-- JS pentru Fade-in la Scroll -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+
+<script>
+const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+const mobileMenu = document.getElementById('mobileMenu');
+
+// Deschide / închide meniul din hamburger
+mobileMenuIcon.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  mobileMenuIcon.classList.toggle('active');
+
+  // Scroll lock
+  document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+});
+
+// Închide meniul când apeși pe un link din meniu
+const mobileLinks = mobileMenu.querySelectorAll('a');
+
+mobileLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    mobileMenuIcon.classList.remove('active');
+    document.body.style.overflow = 'auto'; // reactivare scroll
+  });
+});
+</script>
+
+</body>
+</html>
